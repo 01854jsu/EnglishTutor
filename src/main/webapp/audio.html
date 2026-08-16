@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<audio id="myAudioElement" />
+<script>
+alert("t11-1");
+var audio = document.getElementById('myAudioElement') || new Audio();
+var xhr = new XMLHttpRequest();
+//var xhr = new XMLHttpRequest(),
+//audioContext = new AudioContext(),
+//source = audioContext.createBufferSource();
+alert("t11");
+xhr.open('POST', encodeURI("https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=AIzaSyDsyQ6R9CL9LaBSCaM8QD_8-N7DbdRVLYU"), true);
+alert("t12");
+xhr.setRequestHeader('Content-Type', 'application/json');
+alert("t13");
+xhr.responseType = 'text';
+alert("t1");
+xhr.onload = function() {
+	
+	//function contvertBase64toBinaray(xhr.response) {
+		alert("t2-1");
+		alert(xhr.responseText);
+		var obj = JSON.parse(xhr.responseText);
+		
+		//var VoiceBase64 = btoa(obj.audioContent);
+		alert("t2-2");
+		alert(obj.audioContent);
+		 var audiofile = window.atob(obj.audioContent);
+		 alert("t2-3");
+			alert(audiofile);
+			
+			
+			var shell = WScript.CreateObject("WScript.Shell");
+			shell.Run("C:> Base64.exe -d source_base64_text_file > dest_audio_file");
+		 //};
+		 //var audio =  new Audio(audiofile);
+		// alert("t2-4");
+		// audio.play();
+  //var blob = new Blob([xhr.response], {type: 'audio/mp3'});
+  //var blob = new Blob([xhr.response], {type: 'audio/ogg'});
+  //*
+  var blob = new Blob([obj.audioContent], { type: 'audio/mp3' });
+	alert("t3-1");
+    /*
+	var url = window.URL.createObjectURL(blob);
+    window.audio = new Audio();
+    window.audio.src = url;
+    window.audio.play();
+    alert("t7-1");
+    */
+    //alert(xhr.response);
+  alert("t3");
+  alert(blob);
+  var objectUrl = URL.createObjectURL(blob);
+  audio.src = objectUrl;
+  alert("t4");
+  // Release resource when it's loaded
+  audio.onload = function() {
+	  alert("t5");
+    URL.revokeObjectURL(objectUrl)
+    alert("t6");
+  };
+  alert("t7");
+  audio.play();
+  alert("t7-1");
+};
+alert("t8");
+var data = JSON.stringify({"audioConfig": {
+    "audioEncoding": "MP3",
+    "pitch": 0,
+    "speakingRate": 1
+  },
+  "input": {
+    "text": "go"
+  },
+  "voice": {
+    "languageCode": "en-US",
+    "name": "en-US-Wavenet-D"
+  }});
+alert("t9");
+xhr.send(data);
+alert("t10");
+</script>
+
+</body>
+</html>

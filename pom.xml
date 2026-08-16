@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://apache.org"
+         xmlns:xsi="http://w3.org"
+         xsi:schemaLocation="http://apache.org https://apache.org">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.englishtutor</groupId>
+    <artifactId>EnglishTutor</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       <!-- Default local values used inside Eclipse -->
+       <cicd.env>dev</cicd.env>
+<!--       <cicd.db.url>jdbc:mysql://127.0.0.1:3306/englishtutor</cicd.db.url>-->
+       <cicd.db.url>jdbc:mysql://database:3306/englishtutor?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</cicd.db.url>
+       <cicd.api.key>default-local-key</cicd.api.key> <!-- Local development credentials -->
+       <cicd.db.username>root</cicd.db.username>
+       <cicd.db.password>Jsu01854</cicd.db.password>
+    </properties>
+    <build>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <filtering>true</filtering>
+        </resource>
+    </resources>
+    </build>
+
+    <dependencies>
+    <!-- Servlets locked to old javax space for compatibility -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
+    </dependency>
+
+    <!-- Mail locked to modern jakarta space (Java 8 safe version) -->
+    <dependency>
+        <groupId>jakarta.mail</groupId>
+        <artifactId>jakarta.mail-api</artifactId>
+        <version>2.0.1</version>
+    </dependency>
+    <dependency>
+        <groupId>com.sun.mail</groupId>
+        <artifactId>jakarta.mail</artifactId>
+        <version>2.0.1</version>
+        <scope>runtime</scope>
+    </dependency>
+    <!-- NEW: Added Jsoup library to resolve SearchWordServlet errors -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.18.1</version>
+        </dependency>   
+        <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>5.11.0</version>
+        <scope>test</scope>
+    </dependency> 
+</dependencies>
+
+<!--<profiles>-->
+<!--     Development Environment (Active by Default) -->
+<!--    <profile>-->
+<!--        <id>dev</id>-->
+<!--        <activation>-->
+<!--            <activeByDefault>true</activeByDefault>-->
+<!--        </activation>-->
+<!--        <properties>-->
+<!--            <env.name>dev</env.name>-->
+<!--            <db.url>jdbc:mysql://172.30.176.3:3306/englishtutor</db.url>-->
+<!--        </properties>-->
+<!--    </profile>-->
+
+<!--     Production Environment -->
+<!--    <profile>-->
+<!--        <id>prod</id>-->
+<!--        <properties>-->
+<!--            <env.name>prod</env.name>-->
+<!--            <db.url>jdbc:mysql://englishtutor.clq26uw26wnu.us-east-2.rds.amazonaws.com:3306/englishtutor</db.url>-->
+<!--        </properties>-->
+<!--    </profile>-->
+<!--</profiles>-->
+
+ <profiles>
+    <!-- This profile will automatically trigger ONLY on Windows machines -->
+    <profile>
+        <id>dev-windows</id>
+        <activation>
+            <os>
+                <family>windows</family>
+            </os>
+        </activation>
+        <build>
+            <plugins> <!-- Required wrapper -->                
+            <plugin>
+    <groupId>org.opoo.maven</groupId>
+    <artifactId>tomcat9-maven-plugin</artifactId>
+    <version>3.0.1</version>
+</plugin>
+            </plugins>
+        </build>
+        <properties>
+            <cicd.env>local-dev</cicd.env>
+            <!-- Notice the escaped ampersands (&amp;) required for XML safety -->
+<!--            <cicd.db.url>jdbc:mysql://127.0.0.1:3306/englishtutor?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</cicd.db.url>-->
+            <cicd.db.url>jdbc:mysql://database:3306/englishtutor?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</cicd.db.url>
+           
+        </properties>
+    </profile>
+
+    <!-- Your Production Profile (Left alone, triggered manually via -Pprod in CI/CD) -->
+    <profile>
+        <id>prod</id>
+        <properties>
+            <cicd.env>prod</cicd.env>
+            <cicd.db.url>jdbc:mysql://englishtutor.clq26uw26wnu.us-east-2.rds.amazonaws.com:3306/englishtutor</cicd.db.url>
+        </properties>
+    </profile>
+</profiles>
+
+</project>

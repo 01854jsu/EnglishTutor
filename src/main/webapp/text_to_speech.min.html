@@ -1,0 +1,291 @@
+<!DOCTYPE html><html><head><script src="https://ssl.gstatic.com/external_hosted/polymer/v2/webcomponents-lite.js"></script><!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><!--
+@license
+Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+    <title>Text-to-Speech Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="text_to_speech.min.js">
+	</script>
+    </head>
+  <body>
+  
+  <div hidden="" by-vulcanize="">
+<dom-module id="cloud-demo-captcha" assetpath="/cloud_demo_captcha/">
+  <template>
+    <div hidden$="[[!isVisible]]" id="container" style="margin-top: 12px; display: flex; justify-content: center;">
+    </div>
+  </template>
+  </dom-module>
+<iron-iconset-svg name="cloud-display-code-icons" size="24">
+<svg><defs>
+<g id="content-copy"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></g>
+<g id="done"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"></path></g>
+<g id="error"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></g>
+</defs></svg>
+</iron-iconset-svg>
+<dom-module id="cloud-display-code" assetpath="/cloud_display_code/">
+  <template>
+    <style>:host{display:block}pre{background-color:#fff;color:var(--google-grey-500);font-size:14px;line-height:1.4;margin:0;max-height:400px;overflow-y:scroll;padding:12px;white-space:pre-wrap;@apply --paper-font-common-code}.string{color:var(--google-red-700);white-space:normal;word-break:break-all}.string.no-key{white-space:nowrap}.number,.boolean,.null{color:var(--google-blue-700)}.key{color:var(--google-green-700)}.no-key{color:var(--primary-text-color)}label{color:var(--primary-text-color);display:block;font-size:14px;font-weight:500;padding-bottom:8px;@apply --paper-font-common-base}#clickToCopy{background:#bdbdbd;color:#fff;opacity:0;position:absolute;right:0;top:-4px;transition:background .2s , opacity .2s;z-index:1}.container{position:relative}.container:hover #clickToCopy{opacity:1}#clickToCopy:hover{background:#757575;opacity:1}</style>
+    <label>
+      [[label]]
+    </label>
+    <div class="container">
+      <pre id="code" on-mousewheel="onMousewheel_"></pre>
+      <paper-icon-button id="clickToCopy" icon$="[[copyIcon]]" on-tap="onCopyToClipboardTap_">
+      </paper-icon-button>
+      <paper-tooltip for="clickToCopy" offset="0">
+        [[copyTooltip]]
+      </paper-tooltip>
+    </div>
+  </template>
+  </dom-module>
+<dom-module id="ts-icon-playing" assetpath="/ts_icon_playing/">
+  <template>
+    <style>:host{height:24px;width:24px}@keyframes pulse {
+  0% {
+    opacity: 0.25;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  40% {
+    opacity: 0.25;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}.audio-waves circle{animation-duration:1.7s;animation-iteration-count:infinite;animation-name:pulse;opacity:.25}.audio-waves circle:nth-child(2) {animation-delay:.125s}.audio-waves circle:nth-child(3) {animation-delay:.25s}</style>
+    <style></style>
+    <svg width="24" height="24" viewBox="0 0 24 24">
+      <defs>
+        <clipPath id="volume-clip">
+          <rect x="15" y="0" height="24" width="9"></rect>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#volume-clip)" class="audio-waves">
+        <circle cx="12.5" cy="12" r="3.25" fill="none" stroke="white" stroke-width="1.5"></circle>
+        <circle cx="12.5" cy="12" r="6.5" fill="none" stroke="white" stroke-width="1.5"></circle>
+        <circle cx="12.5" cy="12" r="9.75" fill="none" stroke="white" stroke-width="1.5"></circle>
+      </g>
+      <polygon points="3,9 7,9, 12,4 12,20 7,15 3,15" fill="white"></polygon>
+    </svg>
+  </template>
+  </dom-module>
+<dom-module id="ts-button" assetpath="/ts_button/">
+  <template>
+    <style>:root{--ts-icon-width:20px;--ts-button-padding:14px}:host{margin-left:auto}.state-ready .icon .ready,.state-loading .icon .loading,.state-needsUserToPushPlayAgain .icon .ready,.state-playing .icon .playing,.state-paused .icon .ready,.state-finished .icon .finished{opacity:1}.state-ready .label .ready,.state-loading .label .ready,.state-playing .label .ready,.state-needsUserToPushPlayAgain .label .play,.state-paused .label .paused,.state-finished .label .finished{display:inline-block}.icon .loading{display:none}.state-loading .icon .loading{display:block}.state-loading .icon,.state-playing .icon{left:50%}.state-loading .label,.state-playing .label{opacity:0}paper-button{background:var(--google-blue-500);color:#fff;margin:0}paper-button[disabled]{opacity:.5}paper-button.state-finished{background:var(--paper-grey-100);color:var(--paper-grey-700)}.button-inner{display:flex;margin:0 var(--ts-button-padding);padding-left: calc(var(--ts-icon-width) / 2);position:relative}paper-spinner-lite{--paper-spinner-color:#fff;--paper-spinner-stroke-width:2px;height:var(--ts-icon-width);width:var(--ts-icon-width)}.icon{display:block;height:var(--ts-icon-width);left:0;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:var(--ts-icon-width)}.icon>*{left:50%;opacity:0;position:absolute;top:50%;transform:translate(-50%,-50%)}iron-icon{--iron-icon-height:var(--ts-icon-width);--iron-icon-width:var(--ts-icon-width)}.label{padding-left:6px}.label>span{display:none}</style>
+    <paper-button class$="state-{{state}}" disabled$="[[disabled]]">
+      <span class="button-inner">
+        <span class="icon">
+          <iron-icon class="ready" icon="av:play-arrow"></iron-icon>
+          <paper-spinner-lite class="loading" active=""></paper-spinner-lite>
+          <ts-icon-playing class="playing"></ts-icon-playing>
+          <iron-icon class="finished" icon="av:replay"></iron-icon>
+        </span>
+        <span class="label">
+          <span class="play">
+            Play
+          </span>
+          <span class="ready">
+            Speak it
+          </span>
+          <span class="paused">
+            Resume
+          </span>
+          <span class="finished">
+            Replay
+          </span>
+        </span>
+      </span>
+    </paper-button>
+  </template>
+  </dom-module>
+<dom-module id="ts-input-type-toggle" assetpath="/ts_input_type_toggle/">
+  <template>
+    <style>:host{bottom:0;color:var(--secondary-text-color);position:absolute;right:0}label{color:var(--google-blue-500);cursor:pointer;font-size:12px;line-height:1;overflow:hidden;padding:2px}label:hover{color:var(--google-blue-700)}input{height:1px;left:-10000px;overflow:hidden;position:absolute;top:auto;width:1px}input:checked+label{color:var(--primary-text-color);cursor:default;font-weight:bold}.radio-text{@apply --paper-font-common-base}.radio-ssml{@apply --paper-font-common-code}</style>
+    <template is="dom-repeat" items="[[inputTypes]]" as="type">
+      <span class="input-type">
+        <input checked$="[[isChecked_(type.id, value)]]" id="radio-[[type.id]]" name="input-type" type="radio" value="[[type.id]]" on-change="onToggleChange_">
+        <label class$="radio-[[type.id]]" for$="radio-[[type.id]]">
+          [[type.name]]
+        </label>
+      </span>
+    </template>
+  </template>
+  </dom-module>
+<dom-module id="ts-app" assetpath="/ts_app/">
+  <template>
+    <style>:root{--ts-spacing:12px}:host{box-sizing:border-box;display:block}.container{background:#fff;border-radius:2px;margin:0 auto;max-width:750px;padding:12px 36px 18px}.container>*{padding:var(--ts-spacing) 0}.input{position:relative;margin-bottom: calc(var(--ts-spacing) * 2)}.type-ssml paper-textarea{--paper-input-container-input: {
+    background-color: var(--google-grey-100);
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 1.4;
+    position: relative;
+    @apply --paper-font-common-code;
+  }
+}.controls{display:flex;flex-flow:row wrap;margin: calc(-1 * var(--ts-spacing));transition:opacity .2s}.control-group{display:flex;flex-basis:100%;flex-flow:row wrap}.control-group>*{padding-left:var(--ts-spacing);padding-right:var(--ts-spacing)}.controls[disabled]{opacity:.25;pointer-events:none}.control-group.voice,.control-group.profile,.control-group.config{flex-basis:100%;flex-wrap:nowrap}.control-group.config{flex-wrap:nowrap}.control-language,.control-profile{width:100%}.control-voicetype,.control-variant,.control-slider{flex-basis:50%}.control-slider{padding-top:8px}.slider-container{margin:0 -14px}paper-slider{width:100%;@apply --paper-font-common-base}.control-playback{padding-top:0}.request{background-color:rgba(225,245,254,.4);border-radius:2px;margin-top:var(--ts-spacing);padding:var(--ts-spacing)}.request>div+div{margin-top:var(--ts-spacing)}.show-request{align-items:center;background:none;border:none;color:var(--google-blue-500);cursor:pointer;display:flex;margin:0;padding:var(--ts-spacing) 0;@apply --paper-font-body1}.show-request:hover{color:var(--google-blue-700)}@media (min-width:580px){.control-group.language,.control-group.voice{flex-basis:50%}.control-voicetype,.control-variant{flex-basis:auto}.control-voicetype{flex-basis:33.333%}.control-variant{flex-basis:66.666%}.control-group.profile,.control-group.config{flex-basis:50%}.control-profile{flex-basis:100%}.control-slider{flex-basis:50%}.control-playback{align-items:center;display:flex;padding-top:var(--ts-spacing)}paper-slider{margin-top:-4px}}paper-dropdown-menu{width:100%}.label-control{color:var(--secondary-text-color);display:flex;@apply --paper-font-caption}.label-control .value{margin-left:auto}paper-spinner-lite{--paper-spinner-color:#fff}</style>
+    <div class="container">
+      <div class$="input type-{{textInputTypeSelected}}">
+        <paper-textarea id="inputTextArea" label="[[messages.controls.INPUT_LABEL]]" value="{{textInput}}">
+        </paper-textarea>
+        <ts-input-type-toggle input-types="[[textInputTypes]]" value="{{textInputTypeSelected}}">
+      </ts-input-type-toggle></div>
+      <div class="controls" disabled$="[[!controlsEnabled]]">
+        <div class="control-group language">
+          <div class="control-language">
+            <paper-dropdown-menu alwaysfloatlabel="" label="[[messages.controls.LANGUAGE]]">
+              <paper-listbox attr-for-selected="value" slot="dropdown-content" selected="{{languageSelected}}">
+                <template is="dom-repeat" items="[[languagesAvailable]]" as="language">
+                  <paper-item value="[[language]]">
+                    [[language.name]]<template is="dom-if" if="[[language.rtl]]">‏</template>
+                  </paper-item>
+                </template>
+              </paper-listbox>
+            </paper-dropdown-menu>
+          </div>
+        </div>
+        <div class="control-group voice">
+          <div class="control-voicetype">
+            <paper-dropdown-menu alwaysfloatlabel="" label="[[messages.controls.VOICE_TYPE]]">
+              <paper-listbox attr-for-selected="value" slot="dropdown-content" selected="{{voiceTypeSelected}}">
+                <template is="dom-repeat" items="[[voiceTypes]]" as="voiceType">
+                  <paper-item disabled$="[[!voiceType.enabled]]" value="[[voiceType.id]]">
+                    [[voiceType.name]]
+                  </paper-item>
+                </template>
+              </paper-listbox>
+            </paper-dropdown-menu>
+          </div>
+          <template is="dom-if" if="[[isVariantAvailable]]">
+            <div class="control-variant">
+              <paper-dropdown-menu alwaysfloatlabel="" label="[[messages.controls.VOICE_NAME]]">
+                <paper-listbox attr-for-selected="value" slot="dropdown-content" selected="{{voiceSelected}}">
+                  <template is="dom-repeat" items="[[variantsAvailable]]" as="variant">
+                    <paper-item value="[[variant]]">
+                      [[variant]]
+                    </paper-item>
+                  </template>
+                </paper-listbox>
+              </paper-dropdown-menu>
+            </div>
+          </template>
+        </div>
+        <div class="control-group profile">
+          <div class="control-profile">
+            <paper-dropdown-menu alwaysfloatlabel="" label="[[messages.controls.PROFILE]]">
+              <paper-listbox attr-for-selected="value" slot="dropdown-content" selected="{{profileSelected}}">
+                <template is="dom-repeat" items="[[profilesAvailable]]" as="profile">
+                  <paper-item value="[[profile.id]]">
+                    [[profile.name]]
+                  </paper-item>
+                </template>
+              </paper-listbox>
+            </paper-dropdown-menu>
+          </div>
+        </div>
+        <div class="control-group config">
+          <div class="control-slider">
+            <div class="label-control">
+              [[messages.controls.SPEED]]
+              <div class="value">
+                [[speed]]
+              </div>
+            </div>
+            <div class="slider-container">
+              <paper-slider disabled$="[[!controlsEnabled]]" value="{{speedNormalized}}">
+              </paper-slider>
+            </div>
+          </div>
+          <div class="control-slider">
+            <div class="label-control">
+               [[messages.controls.PITCH]]
+              <div class="value">
+                [[pitch]]
+              </div>
+            </div>
+            <div class="slider-container">
+              <paper-slider disabled$="[[!controlsEnabled]]" value="{{pitchNormalized}}">
+              </paper-slider>
+            </div>
+          </div>
+        </div>
+      </div>
+      <template is="dom-if" if="[[isRequestVisible]]">
+        <div class="request">
+          <div>
+            <cloud-display-code code="[[urlSynthesize]]" copy-tooltip="[[messages.controls.COPY]]" display-as="string" label="[[messages.controls.REQUEST_URL]]">
+            </cloud-display-code>
+          </div>
+          <div>
+            <cloud-display-code code="[[requestObject]]" copy-tooltip="[[messages.controls.COPY]]" label="[[messages.controls.REQUEST_CONFIG]]">
+            </cloud-display-code>
+          </div>
+        </div>
+      </template>
+      <div class="control-playback">
+        <button class="show-request" on-tap="onShowRequestTap_">
+          <span class="label">
+            [[getShowRequestString_(isRequestVisible)]]
+          </span>
+          <span class="icon">
+            <iron-icon icon="[[getShowRequestIcon_(isRequestVisible)]]"></iron-icon>
+          </span>
+        </button>
+        <ts-button id="button" disabled="[[shouldShowCaptcha]]" state="{{audio.state}}" on-tap="onButtonTap_">
+        </ts-button>
+      </div>
+    </div>
+    <template is="dom-if" if="[[shouldShowCaptcha]]">
+      <cloud-demo-captcha parent-node-selector="ts-app" captcha-loaded="{{captchaLoaded}}" captcha-token="{{captchaToken}}" is-visible="{{shouldShowCaptcha}}">
+      </cloud-demo-captcha>
+    </template>
+  </template>
+  </dom-module>
+<style>body{margin:0;padding:0}</style></div>
+    <ts-app></ts-app>
+    
+     <script type="text/javascript">
+    function getNextInput1(input) {
+    	getNextInput("tt");
+    	 var ttw3 = document.getElementsByTagName("inputTextArea");
+    	 ttw3.value =  "this is ok";
+    	    alert("ok");
+    	    
+    	    ttw3.innerHTML =  "this is super";
+    	    alert("super");
+    	//    ttw3.textContent = "test is here";
+    	//var ttw1 = document.getElementsByTagName("inputTextArea");
+       // alert(ttw1);
+
+    	
+    }
+    
+    </script>
+
+<input id="clickMe" type="button" value="clickme" onclick="getNextInput1('test is test')" />
+
+  
+   
+
+    
+</body></html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class="js consumer build-stable chrome win win10 win64 win64-capable twisty-js" lang="en" id="win64"><head>
+<script type="text/javascript" src="main.js"></script>
+
+<script type="text/javascript">
+$(document).on('click', ':button', function (e) {
+
+    var btn = $(e.target);
+    btn.attr("disabled", "disabled"); // disable button
+
+    window.setTimeout(function () {
+        btn.removeAttr("disabled"); // enable button
+    }, 5000 /* 2 sec */);
+});
+</script>
+<style type="text/css">
+form {
+  text-align: center;
+}
+h2{   
+   text-align: center;   
+   text-color: red;
+   font-size:30px;
+}
+h4{   
+   text-align: center;
+   text-color: red;
+   font-size:20px
+}
+h4{   
+   text-align: center;
+   text-color: red;
+   font-size:20px
+}
+
+button{   
+   text-align: center;
+   font-size:14px
+}
+input{   
+   text-align: left;
+   font-size:14px
+}
+/*
+#menudiv{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  font-size: 50px;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+*/
+</style>
+<title>Log In</title>
+</head>
+<body>
+<h2 > Welcome to English Tutor</h2>
+<h4 style="color:blue;"> Please log in</h4>
+<form name="loginform">
+  <div id="loginDiv"> 
+  <table>
+  <tr>
+   UserName:&nbsp;<input type="text" align="center"  id="un"> 
+   Password:&nbsp;<input  type="text" align="center"  id="pw">&nbsp;&nbsp;
+   <button id="submit" type="button" onclick="login()">Submit</button>
+    </tr>
+  </table>      
+      </div>
+      </form>
+      <form name="createuserform">
+      <h4 style="color:blue;">New to English Tutor? Create an account below. If you don't receive the confirmation email, please try again.</h4>
+      <button id="usersubmit" type="button" onclick="user()">Create User</button>
+    <div id="createuser" style="display: none;">
+      Emailaddress: <input type="text" align="center"  id="eain">
+      Grade: <!-- <input  type="text" align="center"  id="grade">  -->
+      <select id="grades">
+		<option value="g3">3</option>
+	  </select>
+      <!-- 
+      <select id="grades">
+		<option value="g1">1</option>
+		<option value="g2">2</option>
+		<option value="g3">3</option>
+		<option value="g4">4</option>
+		<option value="g5">5</option>
+		<option value="g6">6</option>
+		<option value="g7">7</option>
+		<option value="g8">8</option>
+		<option value="g9">9</option>
+		<option value="g10">10</option>
+	</select>
+	 -->
+      UserName: <input  type="text" align="center"  id="unin"> 
+      <button id="createsubmit" type="button" onclick="createuser()">submit</button>
+    </div>
+    <h4 style="color:blue;">Forgot UserName?</h4>
+      <button id="forgotunsubmit" type="button" onclick="forgotun()">Forgot UserName</button>
+    <div id="getun" style="display: none;">
+      Emailaddress: <input type="text" align="center"  id="eagurp">
+      Grade: <select id="gdrp">
+		<option value="g1">1</option>
+		<option value="g2">2</option>
+		<option value="g3">3</option>
+		<option value="g4">4</option>
+		<option value="g5">5</option>
+		<option value="g6">6</option>
+		<option value="g7">7</option>
+		<option value="g8">8</option>
+		<option value="g9">9</option>
+		<option value="g10">10</option>
+	</select>
+      <button id="getunsubmit" type="button" onclick="getun()">submit</button>
+    </div>
+    <h4 style="color:blue;">Forgot Password?</h4>
+      <button id="forgotpwsubmit" type="button" onclick="forgotpw()">Forgot Password</button>
+    <div id="resetpw" style="display: none;">
+      Emailaddress: <input type="text" align="center"  id="earp">
+      UserName: <input type="text" align="center"  id="unrp">
+      <button id="resetpwsubmit" type="button" onclick="resetpw()">submit</button>
+    </div>
+    
+    <div id="menusmtdiv">
+    <h4>Please send your suggestions and feedback to jsu01854@gmail.com. Your feedback is highly appreciated.</h4>
+    <p>
+    <h4 style="color:blue;">To explore English Tutor, please click the Tutorial icon below.</h4>
+    <button id="menusubmit" type="button" onclick="menu()">Tutorial</button>
+    </div>
+    <div id="menudiv" style="display: none;">
+    <video class="H_j_h l_e_g" data-automation="VideoPlayer_video_video" loop="" playsinline="" poster="menu.jpg" height= 100% width: 100% style="transform: rotate(0deg);" controls><source src="menu.mp4" type="video/mp4"></video>
+    </div>
+	</form>
+
+</body>
+</html>

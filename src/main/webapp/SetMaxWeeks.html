@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html class="js consumer build-stable chrome win win10 win64 win64-capable twisty-js" lang="en" id="win64"><head>
+<script>
+
+
+var speaktext;
+var speaktext1;
+
+
+	
+
+</script>
+<script src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.en.xh-S9KbEGSE.O/m=plusone/rt=j/sv=1/d=1/ed=1/am=AQc/rs=AGLTcCMI6cckfOgfLoXSkY9UoCFGZek6-A/cb=gapi.loaded_0" nonce="p8JRtBJsREdwE_eSpI5ffQ" async=""></script><script type="text/javascript" async="" src="https://apis.google.com/js/plusone.js" gapi_processed="true"></script><script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script nonce="p8JRtBJsREdwE_eSpI5ffQ">
+(function(e, p){
+    var m = location.href.match(/platform=(win8|win|mac|linux|cros)/);
+    e.id = (m && m[1]) ||
+           (p.indexOf('Windows NT 6.2') > -1 ? 'win8' : p.indexOf('Windows') > -1 ? 'win' : p.indexOf('Mac') > -1 ? 'mac' : p.indexOf('CrOS') > -1 ? 'cros' : 'linux');
+    e.className = e.className.replace(/\bno-js\b/,'js');
+  })(document.documentElement, window.navigator.userAgent)
+    </script>
+    <meta charset="utf-8">
+    <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
+    <meta content="Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier." name="description">
+    <title>
+      Chrome Browser
+    </title>
+    <link href="https://plus.google.com/100585555255542998765" rel="publisher">
+    <link href="//www.google.com/images/icons/product/chrome-32.png" rel="icon" type="image/ico">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet" nonce="p8JRtBJsREdwE_eSpI5ffQ">
+    <link href="/intl/en/chrome/assets/common/css/chrome.min.css" rel="stylesheet" nonce="p8JRtBJsREdwE_eSpI5ffQ">
+    <script src="//www.google.com/js/gweb/analytics/autotrack.js" nonce="p8JRtBJsREdwE_eSpI5ffQ">
+</script>
+    <script nonce="p8JRtBJsREdwE_eSpI5ffQ">
+new gweb.analytics.AutoTrack({
+          profile: 'UA-26908291-1'
+        });
+    </script>
+    <style>
+#info {
+    font-size: 20px;
+    }
+    #div_start {
+    float: right;
+    }
+    #headline {
+    text-decoration: none
+    }
+    #results {
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    min-height: 150px;
+    }
+    #start_button {
+    border: 0;
+    background-color:transparent;
+    padding: 0;
+    }
+    .interim {
+    color: gray;
+    }
+    .final {
+    color: black;
+    padding-right: 3px;
+    }
+    .button {
+    display: none;
+    }
+    .marquee {
+    margin: 20px auto;
+    }
+
+    #buttons {
+    margin: 10px 0;
+    position: relative;
+    top: -50px;
+    }
+
+    #copy {
+    margin-top: 20px;
+    }
+
+    #copy > div {
+    display: none;
+    margin: 0 70px;
+    }
+    </style>
+    <style>
+a.c1 {font-weight: normal;}
+    </style>
+    <script src="studycontent.js" type="text/javascript"></script>
+<title>Fill Passage content</title>
+</head>
+<body>
+<form name="Passageform">
+  <div id="monthsDiv">  
+  
+  <h2>Please type in Username or Email address:</h2>
+  <label for="username">Username:</label>
+<input type="text" id="username" name="username">
+
+
+  <label for="email">Email:</label>
+<input type="text" id="email" name="email">
+
+<label for="grade">Grade:</label>
+<select id="gradesemail">
+		<option value="g1">1</option>
+		<option value="g2">2</option>
+		<option value="g3">3</option>
+		<option value="g4">4</option>
+		<option value="g5">5</option>
+		<option value="g6">6</option>
+		<option value="g7">7</option>
+		<option value="g8">8</option>
+		<option value="g9">9</option>
+		<option value="g10">10</option>
+		<option value="g11">11</option>
+		<option value="g12">12</option>
+	</select>
+
+<button class="button" id="SubmitFindUserid" onclick="FindUserid(); return false;" style="display: inline-block;">FindUserid</button>
+
+<div id="FindUseridDIV" style="display: none;">
+  <label for="userid" id="useridlbl" style="display: none;">Userid:</label>
+<input type="text" id="userid" style="display: none;" disabled>
+  <label for="payedmonths" id="payedmonthslbl" style="display: none;">Current PayedMonths:</label>
+<input type="text" id="payedmonths" style="display: none;" disabled>
+<!-- <input type="text" id="payedmonths" style="display: none;" value="" disabled> -->
+</div>   
+   
+   
+   <h2>Please click to review the user's profile:</h2>
+<button class="button" id="ReviewProfile" onclick="reviewprof(); return false;" style="display: inline-block;">Review Profile</button>
+	
+	
+<div id="ReviewProDIV" style="display: none;">
+  <label for="revpro1" id="revpro1lbl" style="display: none;">userid:</label>
+<input type="text" id="revpro1" style="display: none;" disabled>
+  <label for="revpro2" id="revpro2lbl" style="display: none;">emailaddress:</label>
+<input type="text" id="revpro2" style="display: none;" disabled>
+  <label for="revpro3" id="revpro3lbl" style="display: none;">username:</label>
+<input type="text" id="revpro3" style="display: none;" disabled>
+  <label for="revpro4" id="revpro4lbl" style="display: none;">grade:</label>
+<input type="text" id="revpro4" style="display: none;" disabled>
+  <label for="revpro5" id="revpro5lbl" style="display: none;">paytype:</label>
+<input type="text" id="revpro5" style="display: none;" disabled>
+  <label for="revpro6" id="revpro6lbl" style="display: none;">Expired date:</label>
+<input type="text" id="revpro6" style="display: none;" disabled>
+  <label for="revpro7" id="revpro7lbl" style="display: none;">payed months:</label>
+<input type="text" id="revpro7" style="display: none;" disabled>
+  <label for="revpro8" id="revpro8lbl" style="display: none;">studyitem:</label>
+<input type="text" id="revpro8" style="display: none;" disabled>
+</div>   
+   
+  <div id="gradesDiv">  
+  <h2>Please choose the grade:</h2>
+  <!--   <textarea id="amit"></textarea> -->
+
+<select id="grades">
+		<option value="g1">1</option>
+		<option value="g2">2</option>
+		<option value="g3">3</option>
+		<option value="g4">4</option>
+		<option value="g5">5</option>
+		<option value="g6">6</option>
+		<option value="g7">7</option>
+		<option value="g8">8</option>
+		<option value="g9">9</option>
+		<option value="g10">10</option>
+		<option value="g11">11</option>
+		<option value="g12">12</option>
+	</select>
+	</div>
+   
+  <h2>Please choose the PayedMonths:</h2>
+  <!--   <textarea id="amit"></textarea> -->
+
+<select id="months">
+		<option value="m1">1</option>
+		<option value="m2">2</option>
+		<option value="m3">3</option>
+		<option value="m4">4</option>
+		<option value="m5">5</option>
+		<option value="m6">6</option>
+		<option value="m7">7</option>
+		<option value="m8">8</option>
+		<option value="m9">9</option>
+		<option value="m10">10</option>
+		<option value="m11">11</option>
+		<option value="m12">12</option>
+	</select>
+	
+	
+   
+  <h2>Please choose the PaymentTypes:</h2>
+  <!--   <textarea id="amit"></textarea> -->
+
+<select id="paytype">
+		<option value="pt1">y</option>
+		<option value="pt2">m</option>
+	</select>
+	
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	 <h2>Please click to update Maxium Weeks:</h2>
+	
+	<button class="button" id="UpdateMaxWeeks" onclick="UpdateMxwek(); return false;" style="display: inline-block;">UpdateMaxWeeks</button>
+	
+	
+   
+   
+  <h2>Please click to update one month for all try accounts:</h2>
+  
+  <button class="button" id="UpdateTryAct" onclick="UpdateTryAct1(); return false;" style="display: inline-block;">Update Try Accouts</button>
+  
+  
+   
+	
+    <script src="/chrome.min.js" nonce="p8JRtBJsREdwE_eSpI5ffQ">
+</script> <script nonce="p8JRtBJsREdwE_eSpI5ffQ">
+var chrmMenuBar = new chrm.ui.MenuBar();
+      chrmMenuBar.decorate('nav');
+      var chrmLogo = new chrm.ui.Logo('logo');
+
+      var chrmscroll = new chrm.ui.SmoothScroll('scroll');
+      chrmscroll.init();
+
+
+
+  window.___gcfg = { lang: 'en' };
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+
+
+
+
+      var doubleTracker = new gweb.analytics.DoubleTrack('floodlight', {
+          src: 2542116,
+          type: 'clien612',
+          cat: 'chrom0'
+      });
+      doubleTracker.track();
+
+      doubleTracker.trackClass('doubletrack', true);
+    </script><iframe src="//2542116.fls.doubleclick.net/activityi;src=2542116;type=clien612;cat=chrom0;ord=3114483025227.1904?" width="1" height="1" style="display: none;"></iframe> <script nonce="p8JRtBJsREdwE_eSpI5ffQ">
+// If you modify this array, also update default language / dialect below.
+var langs =
+[['Afrikaans',       ['af-ZA']],
+ ['አማርኛ',           ['am-ET']],
+ ['Azərbaycanca',    ['az-AZ']],
+ ['বাংলা',            ['bn-BD', 'বাংলাদেশ'],
+                     ['bn-IN', 'ভারত']],
+ ['Bahasa Indonesia',['id-ID']],
+ ['Bahasa Melayu',   ['ms-MY']],
+ ['Català',          ['ca-ES']],
+ ['Čeština',         ['cs-CZ']],
+ ['Dansk',           ['da-DK']],
+ ['Deutsch',         ['de-DE']],
+ ['English',         ['en-AU', 'Australia'],
+                     ['en-CA', 'Canada'],
+                     ['en-IN', 'India'],
+                     ['en-KE', 'Kenya'],
+                     ['en-TZ', 'Tanzania'],
+                     ['en-GH', 'Ghana'],
+                     ['en-NZ', 'New Zealand'],
+                     ['en-NG', 'Nigeria'],
+                     ['en-ZA', 'South Africa'],
+                     ['en-PH', 'Philippines'],
+                     ['en-GB', 'United Kingdom'],
+                     ['en-US', 'United States']],
+ ['Español',         ['es-AR', 'Argentina'],
+                     ['es-BO', 'Bolivia'],
+                     ['es-CL', 'Chile'],
+                     ['es-CO', 'Colombia'],
+                     ['es-CR', 'Costa Rica'],
+                     ['es-EC', 'Ecuador'],
+                     ['es-SV', 'El Salvador'],
+                     ['es-ES', 'España'],
+                     ['es-US', 'Estados Unidos'],
+                     ['es-GT', 'Guatemala'],
+                     ['es-HN', 'Honduras'],
+                     ['es-MX', 'México'],
+                     ['es-NI', 'Nicaragua'],
+                     ['es-PA', 'Panamá'],
+                     ['es-PY', 'Paraguay'],
+                     ['es-PE', 'Perú'],
+                     ['es-PR', 'Puerto Rico'],
+                     ['es-DO', 'República Dominicana'],
+                     ['es-UY', 'Uruguay'],
+                     ['es-VE', 'Venezuela']],
+ ['Euskara',         ['eu-ES']],
+ ['Filipino',        ['fil-PH']],
+ ['Français',        ['fr-FR']],
+ ['Basa Jawa',       ['jv-ID']],
+ ['Galego',          ['gl-ES']],
+ ['ગુજરાતી',           ['gu-IN']],
+ ['Hrvatski',        ['hr-HR']],
+ ['IsiZulu',         ['zu-ZA']],
+ ['Íslenska',        ['is-IS']],
+ ['Italiano',        ['it-IT', 'Italia'],
+                     ['it-CH', 'Svizzera']],
+ ['ಕನ್ನಡ',             ['kn-IN']],
+ ['ភាសាខ្មែរ',          ['km-KH']],
+ ['Latviešu',        ['lv-LV']],
+ ['Lietuvių',        ['lt-LT']],
+ ['മലയാളം',          ['ml-IN']],
+ ['मराठी',             ['mr-IN']],
+ ['Magyar',          ['hu-HU']],
+ ['ລາວ',              ['lo-LA']],
+ ['Nederlands',      ['nl-NL']],
+ ['नेपाली भाषा',        ['ne-NP']],
+ ['Norsk bokmål',    ['nb-NO']],
+ ['Polski',          ['pl-PL']],
+ ['Português',       ['pt-BR', 'Brasil'],
+                     ['pt-PT', 'Portugal']],
+ ['Română',          ['ro-RO']],
+ ['සිංහල',          ['si-LK']],
+ ['Slovenščina',     ['sl-SI']],
+ ['Basa Sunda',      ['su-ID']],
+ ['Slovenčina',      ['sk-SK']],
+ ['Suomi',           ['fi-FI']],
+ ['Svenska',         ['sv-SE']],
+ ['Kiswahili',       ['sw-TZ', 'Tanzania'],
+                     ['sw-KE', 'Kenya']],
+ ['ქართული',       ['ka-GE']],
+ ['Հայերեն',          ['hy-AM']],
+ ['தமிழ்',            ['ta-IN', 'இந்தியா'],
+                     ['ta-SG', 'சிங்கப்பூர்'],
+                     ['ta-LK', 'இலங்கை'],
+                     ['ta-MY', 'மலேசியா']],
+ ['తెలుగు',           ['te-IN']],
+ ['Tiếng Việt',      ['vi-VN']],
+ ['Türkçe',          ['tr-TR']],
+ ['اُردُو',            ['ur-PK', 'پاکستان'],
+                     ['ur-IN', 'بھارت']],
+ ['Ελληνικά',         ['el-GR']],
+ ['български',         ['bg-BG']],
+ ['Pусский',          ['ru-RU']],
+ ['Српски',           ['sr-RS']],
+ ['Українська',        ['uk-UA']],
+ ['한국어',            ['ko-KR']],
+ ['中文',             ['cmn-Hans-CN', '普通话 (中国大陆)'],
+                     ['cmn-Hans-HK', '普通话 (香港)'],
+                     ['cmn-Hant-TW', '中文 (台灣)'],
+                     ['yue-Hant-HK', '粵語 (香港)']],
+ ['日本語',           ['ja-JP']],
+ ['हिन्दी',             ['hi-IN']],
+ ['ภาษาไทย',         ['th-TH']]];
+
+for (var i = 0; i < langs.length; i++) {
+  select_language.options[i] = new Option(langs[i][0], i);
+}
+// Set default language / dialect.
+select_language.selectedIndex = 10;
+updateCountry();
+select_dialect.selectedIndex = 11;
+showInfo('info_start');
+
+function updateCountry() {
+  for (var i = select_dialect.options.length - 1; i >= 0; i--) {
+    select_dialect.remove(i);
+  }
+  var list = langs[select_language.selectedIndex];
+  for (var i = 1; i < list.length; i++) {
+    select_dialect.options.add(new Option(list[i][1], list[i][0]));
+  }
+  select_dialect.style.visibility = list[1].length == 1 ? 'hidden' : 'visible';
+}
+
+var create_email = false;
+var final_transcript = '';
+var recognizing = false;
+var ignore_onend;
+var start_timestamp;
+if (!('webkitSpeechRecognition' in window)) {
+  upgrade();
+} else {
+  start_button.style.display = 'inline-block';
+  var recognition = new webkitSpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = true;
+
+  recognition.onstart = function() {
+    recognizing = true;
+    showInfo('info_speak_now');
+    start_img.src = '/EnglishTutor/mic-animate.gif';
+  };
+
+  recognition.onerror = function(event) {
+    if (event.error == 'no-speech') {
+      start_img.src = '/EnglishTutor/mic.gif';
+      showInfo('info_no_speech');
+      ignore_onend = true;
+    }
+    if (event.error == 'audio-capture') {
+      start_img.src = '/EnglishTutor/mic.gif';
+      showInfo('info_no_microphone');
+      ignore_onend = true;
+    }
+    if (event.error == 'not-allowed') {
+      if (event.timeStamp - start_timestamp < 100) {
+        showInfo('info_blocked');
+      } else {
+        showInfo('info_denied');
+      }
+      ignore_onend = true;
+    }
+  };
+
+  recognition.onend = function() {
+    recognizing = false;
+    if (ignore_onend) {
+      return;
+    }
+    start_img.src = '/EnglishTutor/mic.gif';
+    if (!final_transcript) {
+      showInfo('info_start');
+      return;
+    }
+    showInfo('');
+    if (window.getSelection) {
+      window.getSelection().removeAllRanges();
+      var range = document.createRange();
+      range.selectNode(document.getElementById('final_span'));
+      window.getSelection().addRange(range);
+    }
+    if (create_email) {
+      create_email = false;
+      createEmail();
+    }
+  };
+
+  recognition.onresult = function(event) {
+    var interim_transcript = '';
+    if (typeof(event.results) == 'undefined') {
+      recognition.onend = null;
+      recognition.stop();
+      upgrade();
+      return;
+    }
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        final_transcript += event.results[i][0].transcript;
+      } else {
+        interim_transcript += event.results[i][0].transcript;
+      }
+    }
+    final_transcript = capitalize(final_transcript);
+    final_span.innerHTML = linebreak(final_transcript);
+    interim_span.innerHTML = linebreak(interim_transcript);
+    if (final_transcript || interim_transcript) {
+      showButtons('inline-block');
+    }
+  };
+}
+
+function upgrade() {
+  start_button.style.visibility = 'hidden';
+  showInfo('info_upgrade');
+}
+
+var two_line = /\n\n/g;
+var one_line = /\n/g;
+function linebreak(s) {
+  return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+}
+
+var first_char = /\S/;
+function capitalize(s) {
+  return s.replace(first_char, function(m) { return m.toUpperCase(); });
+}
+
+function createEmail() {
+  var n = final_transcript.indexOf('\n');
+  if (n < 0 || n >= 80) {
+    n = 40 + final_transcript.substring(40).indexOf(' ');
+  }
+  var subject = encodeURI(final_transcript.substring(0, n));
+  var body = encodeURI(final_transcript.substring(n + 1));
+  window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+}
+
+function copyButton() {
+  if (recognizing) {
+    recognizing = false;
+    recognition.stop();
+  }
+  copy_button.style.display = 'none';
+  copy_info.style.display = 'inline-block';
+  showInfo('');
+}
+
+function emailButton() {
+  if (recognizing) {
+    create_email = true;
+    recognizing = false;
+    recognition.stop();
+  } else {
+    createEmail();
+  }
+  email_button.style.display = 'none';
+  email_info.style.display = 'inline-block';
+  showInfo('');
+}
+
+function startButton(event) {
+  if (recognizing) {
+    recognition.stop();
+    return;
+  }
+  final_transcript = '';
+  recognition.lang = select_dialect.value;
+  recognition.start();
+  ignore_onend = false;
+  final_span.innerHTML = '';
+  interim_span.innerHTML = '';
+  start_img.src = '/EnglishTutor/mic-slash.gif';
+  showInfo('info_allow');
+  showButtons('none');
+  start_timestamp = event.timeStamp;
+}
+
+function showInfo(s) {
+  if (s) {
+    for (var child = info.firstChild; child; child = child.nextSibling) {
+      if (child.style) {
+        child.style.display = child.id == s ? 'inline' : 'none';
+      }
+    }
+    info.style.visibility = 'visible';
+  } else {
+    info.style.visibility = 'hidden';
+  }
+}
+
+var current_style;
+function showButtons(style) {
+  if (style == current_style) {
+    return;
+  }
+  current_style = style;
+  copy_button.style.display = style;
+  email_button.style.display = style;
+  copy_info.style.display = 'none';
+  email_info.style.display = 'none';
+}
+
+
+function reviewprof () {
+	//alert("Passage reviewprof");
+	  var xhttp = new XMLHttpRequest();
+	  //var e = document.getElementById("grades");
+	  //var grades = e.options[e.selectedIndex].text;
+	  //var weeksElement = document.getElementById("weeks");
+	  //var weeks = weeksElement.options[weeksElement.selectedIndex].text;
+	  //var contents = document.getElementById("results").innerHTML;
+
+	  //var contents = document.getElementById("final_span").textContent;
+	  var userid = "";
+	  if(document.getElementById("userid").value != "" && document.getElementById("userid").value != null)
+	       userid = document.getElementById("userid").value;
+	  else
+	       userid = document.getElementById("revpro1").value;
+	  /*
+	  var email = document.getElementById("email").value;
+ 	  var e = document.getElementById("gradesemail");
+ 	  var grades = e.options[e.selectedIndex].text;
+ 	  
+ 	  if(email != "" && grades == ""){
+ 		 alert("email and grades are needed in pairs");
+ 		 return false;
+ 	  }
+ 	  if(email == "" && grades != ""){
+ 		 alert("email and grades are needed in pairs");
+ 		 return false;
+      }
+ 	  */
+	  //alert("userid " + userid);
+
+	  //alert("weeks " + weeks);
+
+	  //alert("grades " + grades);
+	  //var url="studycontent.jsp";
+	  //var str = grades + "&weeks=" + weeks + "&contents=" + contents;
+	  //var url="SetPassage.jsp?grades=" + str;
+	  var url="SetUser.jsp?userid=" + userid + "&reviewprof=1";
+	  //var url="SetPassage.jsp?grades=" + grades;
+	  //var url="";
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	//alert(this.responseText);
+	    	///*
+	    	var uidpyweek = this.responseText;
+	    	var uidpyweektempi;
+	    	//questiontexti = questiontext.substring(0, p);
+		 	//alert("questiontexti " + questiontexti);
+		 	document.getElementById("ReviewProDIV").style.display = "block"; 
+		 	var k = 0;
+		 	for (k; uidpyweek.search(";") > 0; k++)
+		 		{
+		 		o = uidpyweek.search(";");
+			 	//alert("k " + k);
+			 	//questionans[k] = uidpyweek.substring(0, o);
+			 	
+			 	var l = k + 1;
+
+			     document.getElementById("revpro" + l).value = uidpyweek.substring(0, o);	     
+			     document.getElementById("revpro" + l).style.display = "block";     
+			     document.getElementById("revpro" + l + "lbl").style.display = "block";
+
+			 	//alert("questionans[k] " + questionans[k]);
+			 	//alert("Qarray[i][j] " + Qarray[i][j]);
+			 	uidpyweektempi = uidpyweek.substring(o+1);
+			 	//alert("questiontexttempi " + questiontexttempi);
+			 	uidpyweek = uidpyweektempi;
+
+			 	//alert("questiontexti " + questiontexti);
+			 	//Qarray[i][j] = teacherquestiontemp;
+		 		}
+	    	
+	    	
+	    	
+	    	var n = uidpyweek.search("/");
+		 	
+		 	var userid = uidpyweek.substring(0, n);
+		 	var payedmonths = uidpyweek.substring(n+1);
+		 	//*/
+	     document.getElementById("userid").value = userid;	     
+	     document.getElementById("userid").style.display = "block";     
+	     document.getElementById("useridlbl").style.display = "block";
+	     ///*
+	     document.getElementById("payedmonths").value = payedmonths;	     
+	     document.getElementById("payedmonths").style.display = "block";     
+	     document.getElementById("payedmonthslbl").style.display = "block";
+	     //*/
+	     document.getElementById("FindUseridDIV").style.display = "block";	     
+	    }
+	  };
+	  xhttp.open("GET", url, true);
+	  xhttp.send();
+	}
+	
+	
+function FindUserid () {
+	//alert("Passage FindUserid");
+	  var xhttp = new XMLHttpRequest();
+	  //var e = document.getElementById("grades");
+	  //var grades = e.options[e.selectedIndex].text;
+	  //var weeksElement = document.getElementById("weeks");
+	  //var weeks = weeksElement.options[weeksElement.selectedIndex].text;
+	  //var contents = document.getElementById("results").innerHTML;
+
+	  //var contents = document.getElementById("final_span").textContent;
+	  
+	  var username = document.getElementById("username").value;
+	  var email = document.getElementById("email").value;
+ 	  var e = document.getElementById("gradesemail");
+ 	  var grades = e.options[e.selectedIndex].text;
+ 	  
+ 	  if(email != "" && grades == ""){
+ 		 alert("email and grades are needed in pairs");
+ 		 return false;
+ 	  }
+ 	  if(email == "" && grades != ""){
+ 		 alert("email and grades are needed in pairs");
+ 		 return false;
+      }
+ 	  
+	  //alert("contents " + contents);
+
+	  //alert("weeks " + weeks);
+
+	  //alert("grades " + grades);
+	  //var url="studycontent.jsp";
+	  //var str = grades + "&weeks=" + weeks + "&contents=" + contents;
+	  //var url="SetPassage.jsp?grades=" + str;
+	  var url="SetUser.jsp?username=" + username + "&email=" + email + "&grade=" + grades;
+	  //var url="SetPassage.jsp?grades=" + grades;
+	  //var url="";
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	//alert(this.responseText);
+	    	///*
+	    	
+	    	var uidpyweek = this.responseText;
+	    	
+	    	if( uidpyweek === "No user found"){
+		 		alert(uidpyweek);
+			    document.getElementById("FindUseridDIV").style.display = "none";
+		 	}else{
+		 		
+	    	var n = uidpyweek.search("/");		 	
+		 	var userid = uidpyweek.substring(0, n);
+		 	var payedmonths = uidpyweek.substring(n+1);
+		 	//*/
+	     document.getElementById("userid").value = userid;	     
+	     document.getElementById("userid").style.display = "block";     
+	     document.getElementById("useridlbl").style.display = "block";
+	     ///*
+	     document.getElementById("payedmonths").value = payedmonths;	     
+	     document.getElementById("payedmonths").style.display = "block";     
+	     document.getElementById("payedmonthslbl").style.display = "block";
+	     //*/
+	     document.getElementById("FindUseridDIV").style.display = "block";	
+		 }
+	    }
+	  };
+	  xhttp.open("GET", url, true);
+	  xhttp.send();
+	}
+	
+	
+
+function UpdateTryAct1() {
+	
+ 	//alert("Passage UpdateTryAct1");
+	  var xhttp = new XMLHttpRequest();
+	  var e = document.getElementById("months");
+	  var months = e.options[e.selectedIndex].text;
+	  var e = document.getElementById("grades");
+	  var grades = e.options[e.selectedIndex].text;
+	  var userid = document.getElementById("userid").value;
+	  
+	  //var contents = document.getElementById("results").innerHTML;
+	  //var contents = document.getElementById("final_span").textContent;
+
+	  //var contents = document.getElementById("copyspeech").value;
+	  //alert("userid " + userid);
+
+	  //alert("UpdateTryAct ");
+
+	  //alert("grades " + grades);
+	  //var url="studycontent.jsp";
+	  //var str = grades + "&weeks=" + weeks + "&contents=" + contents;
+	  //var url="SetPassage.jsp?grades=" + str;
+	  var url="SetMainten.jsp?maintenmon=1";
+	  //var url="SetPassage.jsp?grades=" + grades;
+	  //var url="";
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     alert(this.responseText);
+	    }
+	  };
+	  xhttp.open("GET", url, true);
+	  xhttp.send();
+	} 
+
+ function UpdateMxwek() {
+ 	//alert("Passage "); paytype
+ 	  var xhttp = new XMLHttpRequest();
+ 	  var e = document.getElementById("months");
+ 	  var months = e.options[e.selectedIndex].text;
+ 	  var e = document.getElementById("grades");
+ 	  var grades = e.options[e.selectedIndex].text;
+ 	  var userid = document.getElementById("userid").value;
+ 	  var e = document.getElementById("paytype");
+ 	  var paytype = e.options[e.selectedIndex].text;
+ 	  //var contents = document.getElementById("results").innerHTML;
+ 	  //var contents = document.getElementById("final_span").textContent;
+ 
+	  if(userid == "")
+	       userid = document.getElementById("revpro1").value;
+ 	  //var contents = document.getElementById("copyspeech").value;
+ 	  //alert("userid " + userid);
+
+ 	  //alert("months " + months);
+
+ 	  //alert("grades " + grades);
+ 	  //var url="studycontent.jsp";
+ 	  //var str = grades + "&weeks=" + weeks + "&contents=" + contents;
+ 	  //var url="SetPassage.jsp?grades=" + str;
+ 	  var url="SetUser.jsp?userid=" + userid + "&month=" + months + "&grade=" + grades + "&paytype=" + paytype;
+ 	  //var url="SetPassage.jsp?grades=" + grades;
+ 	  //var url="";
+ 	  xhttp.onreadystatechange = function() {
+ 	    if (this.readyState == 4 && this.status == 200) {
+ 	     alert(this.responseText);
+ 	    }
+ 	  };
+ 	  xhttp.open("GET", url, true);
+ 	  xhttp.send();
+ 	} 
+	
+
+
+	
+function Passagecopy() {
+	//alert("Passage ");
+	  var xhttp = new XMLHttpRequest();
+	  var e = document.getElementById("grades");
+	  var grades = e.options[e.selectedIndex].text;
+	  var weeksElement = document.getElementById("weeks");
+	  var weeks = weeksElement.options[weeksElement.selectedIndex].text;
+	  //var contents = document.getElementById("results").innerHTML;
+
+	  //var contents = document.getElementById("final_span").textContent;
+	  
+	  var contents = document.getElementById("copyspeech").value;
+	  //alert("contents " + contents);
+
+	  //alert("weeks " + weeks);
+
+	  //alert("grades " + grades);
+	  //var url="studycontent.jsp";
+	  //var str = grades + "&weeks=" + weeks + "&contents=" + contents;
+	  //var url="SetPassage.jsp?grades=" + str;
+	  var url="SetPassage.jsp?grade=" + grades + "&week=" + weeks + "&contents=" + contents;
+	  //var url="SetPassage.jsp?grades=" + grades;
+	  //var url="";
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     alert(this.responseText);
+	    }
+	  };
+	  xhttp.open("GET", url, true);
+	  xhttp.send();
+	}
+	
+
+function Passage() {
+	//alert("Passage ");
+	  var xhttp = new XMLHttpRequest();
+	  var e = document.getElementById("grades");
+	  var grades = e.options[e.selectedIndex].text;
+	  var weeksElement = document.getElementById("weeks");
+	  var weeks = weeksElement.options[weeksElement.selectedIndex].text;
+	  //var contents = document.getElementById("results").innerHTML;
+
+	  var contents = document.getElementById("final_span").textContent;
+	  
+	  //var contents = document.getElementById("copyspeech").value;
+	  //alert("contents " + contents);
+
+	  //alert("weeks " + weeks);
+
+	  //alert("grades " + grades);
+	  //var url="studycontent.jsp";
+	  //var str = grades + "&weeks=" + weeks + "&contents=" + contents;
+	  //var url="SetPassage.jsp?grades=" + str;
+	  var url="SetPassage.jsp?grade=" + grades + "&week=" + weeks + "&contents=" + contents;
+	  //var url="SetPassage.jsp?grades=" + grades;
+	  //var url="";
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     alert(this.responseText);
+	    }
+	  };
+	  xhttp.open("GET", url, true);
+	  xhttp.send();
+	}
+    </script>
+  
+</body>
+</html>

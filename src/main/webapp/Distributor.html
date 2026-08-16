@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="js consumer build-stable chrome win win10 win64 win64-capable twisty-js" lang="en" id="win64"><head>
+<script type="text/javascript" src="Distributor.js"></script>
+<script type="text/javascript">
+$(document).on('click', ':button', function (e) {
+
+    var btn = $(e.target);
+    btn.attr("disabled", "disabled"); // disable button
+
+    window.setTimeout(function () {
+        btn.removeAttr("disabled"); // enable button
+    }, 5000 /* 2 sec */);
+});
+</script>
+<style type="text/css">
+form {
+  text-align: center;
+}
+h2{   
+   text-align: center;   
+   text-color: red;
+}
+h4{   
+   text-align: center;
+   text-color: red;
+}
+</style>
+<title>Distributor</title>
+</head>
+<body>
+<div  style="text-align: right;">
+<h3>Customer Profile</h3>
+<button id="cusprofi" type="button" onclick="cusprofi()">checking</button>
+ <div id="paytypediv" style="display: none;"></div>
+ <div id="weeksdiv" style="display: none;"></div>
+ <div id="datediv" style="display: none;"></div>
+ <div id="itemdiv" style="display: none;"></div>
+ <div id="coindiv" style="display: none;"></div>
+ <div id="changepwdiv" style="display: none;">
+ <button id="changepw" type="button" onclick="changepw()">change Password</button>
+ </div>
+ <div id="pwchangeddiv" style="display: none;">
+      OldPassword: <input type="text" align="center"  id="oldpw">
+      NewPassword: <input  type="text" align="center"  id="newpw"> 
+      Retype NewPassword: <input  type="text" align="center"  id="renewpw"> 
+      <button id="pwchanged" type="button" onclick="pwchanged()">submit</button>
+  </div>
+</div>
+<h2 > Welcome to English Tutor</h2> 
+<h4 style="color:blue;"> Please Choose what to do for English study?</h4>
+  <p>
+<form name="Distribform">
+  <div id="DistribDiv"> 
+  <div id="GrammerDiv" style="display: none;">
+  <table>
+  <tr>
+   Study the grammer, please click "grammer"
+   <button id="gramsubmit" type="button" onclick="grammer()">grammer</button>
+    </tr>
+  </table>
+  </div> 
+  <p>
+  <div id="ReadDiv" style="display: none;">
+    <table>
+    <tr>
+   Study the question and answer, please click "reading"
+   <button id="readsubmit" type="button" onclick="reading()">reading</button>
+    </tr>
+  </table>
+  </div>
+  <p> 
+  <div id="WriteDiv" style="display: none;">
+    <table>
+    <tr>
+   Study the english writing, please click "writing"
+   <button id="writsubmit" type="button" onclick="writing()">writing</button>
+    </tr>
+  </table> 
+  </div> 
+  <p> 
+  <div id="quesexpDiv" style="display: none;">
+    <table>
+    <tr>
+   Study the english writing, please click "writing"
+   <button id="quesexpsubmit" type="button" onclick="quesexp()">writing</button>
+    </tr>
+  </table> 
+  </div> 
+  <p> 
+  <div id="passageexpDiv" style="display: none;">
+    <table>
+    <tr>
+   Study the english writing, please click "writing"
+   <button id="passageexpsubmit" type="button" onclick="passageexp()">passage explanation</button>
+    </tr>
+  </table> 
+  </div> 
+  <p> 
+  <div id="quesanswDiv" style="display: none;">
+    <table>
+    <tr>
+   Study the english writing, please click "writing"
+   <button id="quesanswsubmit" type="button" onclick="quesansw()">question answer</button>
+    </tr>
+  </table> 
+  </div> 
+  <p> 
+  <div id="passageDiv" style="display: none;">
+    <table>
+    <tr>
+   Study the english writing, please click "writing"
+   <button id="passagesubmit" type="button" onclick="passage()">passage</button>
+    </tr>
+  </table> 
+  </div> 
+  <p> 
+  <div id="questionDiv" style="display: none;">
+    <table>
+    <tr>
+   Study the english writing, please click "writing"
+   <button id="questionsubmit" type="button" onclick="question()">questions</button>
+    </tr>
+  </table> 
+  </div> 
+  <p> 
+  <div id="highlightwordDiv" style="display: none;">
+    <table>
+    <tr>
+   Study the english writing, please click "writing"
+   <button id="highlightwordsubmit" type="button" onclick="highlightword()">highlighted word</button>
+    </tr>
+  </table> 
+  </div> 
+  <p> 
+  <div id="maxweeksDiv" style="display: none;">
+    <table>
+    <tr>
+   Study the english writing, please click "writing"
+   <button id="maxweekssubmit" type="button" onclick="maxweeks()">maxweeks</button>
+    </tr>
+  </table> 
+  </div> 
+  <p> 
+  <div id="gramexpDiv" style="display: none;">
+    <table>
+    <tr>
+   Study the english writing, please click "writing"
+   <button id="gramexpsubmit" type="button" onclick="gramexp()">grammar explanation</button>
+    </tr>
+  </table> 
+  </div> 
+  <p> 
+  <div id="gramexp1Div" style="display: none;">
+    <table>
+    <tr>
+   Study the english writing, please click "writing"
+   <button id="gramexp1submit" type="button" onclick="gramexp1()">grammar explanation 1</button>
+    </tr>
+  </table> 
+  </div> 
+  <p> 
+  <div id="searchwordDiv" style="display: none;">
+    <table>
+    <tr>
+   Study the searchword
+   <button id="searchwordsubmit" type="button" onclick="searchword()">searchword</button>
+    </tr>
+  </table> 
+  </div>  
+      </div>
+      </form>
+</body>
+</html>
