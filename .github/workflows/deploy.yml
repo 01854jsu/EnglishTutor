@@ -56,4 +56,5 @@ jobs:
           docker pull ${{ secrets.DOCKERHUB_USERNAME }}/englishtutor:latest
           
           # Run the new container, mapping host port 80 to Tomcat container port 8080
-          docker run -d --name my-running-app -p 80:8080 ${{ secrets.DOCKERHUB_USERNAME }}/englishtutor:latest 
+          docker run -d --name my-running-app -p 80:8080 ${{ secrets.DOCKERHUB_USERNAME }}/englishtutor:latest
+          
