@@ -1,0 +1,59 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ] # Triggers the pipeline when pushing to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Pull the source code down to the GitHub runner
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
+
+    # 2. Setup Java Environment to compile the Eclipse project
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: 'maven'
+
+    # 3. Compile and Package the app into a WAR file
+    - name: Build WAR File with Maven
+      run: mvn clean package
+
+    # 4. Authenticate into your Docker Hub account
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets::DOCKERHUB_USERNAME }}
+        password: ${{ secrets::DOCKERHUB_TOKEN }}
+
+    # 5. Build the Docker Image and Push it to Docker Hub
+    - name: Build and Push Docker Image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/englishtutor:latest
+
+    # 6. SSH into EC2, stop old containers, pull the new image, and run it
+    - name: Deploy to AWS EC2 via SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          # Stop and remove the existing container if it exists
+          docker stop my-running-app || true
+          docker rm my-running-app || true
+          
+          # Pull the freshly built image from Docker Hub
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/englishtutor:latest
+          
+          # Run the new container, mapping host port 80 to Tomcat container port 8080
+          docker run -d --name my-running-app -p 80:8080 ${{ secrets.DOCKERHUB_USERNAME }}/englishtutor:latest 
