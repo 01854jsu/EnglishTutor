@@ -1,7 +1,6 @@
 var speaktext;
 var speaktext1;
 var studycontent;
-
 var quesexpcontentcnt;
 var quesexpcontentcntmax;
 var queryString = window.location.search;
